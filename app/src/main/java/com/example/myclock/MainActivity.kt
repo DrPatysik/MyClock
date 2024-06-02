@@ -2,12 +2,7 @@ package com.example.myclock
 
 import android.os.Bundle
 import android.os.Handler
-import android.os.Looper
-import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.example.myclock.databinding.ActivityMainBinding
 import java.util.Locale
 
@@ -15,7 +10,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var handler: Handler
     private lateinit var runnable: Runnable
-    private var isClicked = false
+    private var isPressed = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,28 +36,23 @@ class MainActivity : AppCompatActivity() {
 
 
         binding.btnStart.setOnClickListener {
-            isClicked = true
+           // isPressed = true
             handler.post(runnable)
         }
 
         binding.btnPause.setOnClickListener {
-            isClicked = false
+          //  isPressed = false
             handler.removeCallbacks(runnable)
 
         }
 
         binding.btnReset.setOnClickListener {
-            isClicked = false
+          //  isPressed = false
             handler.removeCallbacks(runnable)
-
+            second = 0
             binding.txtVTimer.text = getString(R.string.timer)
         }
 
-        /*if (isClicked) {
-            handler.post(runnable)
-        } else {
-            handler.removeCallbacks(runnable)
-        }*/
 
 
     }
