@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <string name="app_name">MyClock</string>
+    <string name="start">СТАРТ</string>
+    <string name="pause">ПАУЗА</string>
+    <string name="reset">СБРОС</string>
+    <string name="timer">0:00:00</string>
+</resources>

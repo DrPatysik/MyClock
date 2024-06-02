@@ -18,10 +18,14 @@ class MainActivity : AppCompatActivity(), Runnable {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        handler = Handler()
-        runnable = Runnable{run()}
+        init()
+    }
+    private fun init() {
 
-        handler.post( runnable )
+        handler = Handler()
+        runnable = Runnable { run() }
+
+        handler.post(runnable)
 
         binding.btnStart.setOnClickListener {
             isRunning = true
@@ -37,26 +41,19 @@ class MainActivity : AppCompatActivity(), Runnable {
             binding.txtVTimer.text = getString(R.string.timer)
         }
     }
-
     override fun run() {
-        runTimer()
         if (isRunning) {
             second++
         }
+        runTimer()
         handler.postDelayed(this, 1000)
     }
 
-    private fun runTimer(){
+    private fun runTimer() {
         var sec = second % 60
         var minutes = (second % 3600) / 60
         var hours = second / 3600
         binding.txtVTimer.text =
             String.format(Locale.getDefault(), "%2d:%02d:%02d", hours, minutes, sec)
     }
-
 }
-
-    //TODO перенести код сюда
-    private fun init() {
-
-    }
