@@ -31,34 +31,45 @@ class MainActivity : AppCompatActivity() {
             second++
             handler.postDelayed(runnable, 1000)
             var sec = second % 60
-            var minutes = (second % 3600)/60
+            var minutes = (second % 3600) / 60
             var hours = second / 3600
             binding.txtVTimer.text =
                 String.format(Locale.getDefault(), "%2d:%02d:%02d", hours, minutes, sec)
         }
 
 
-          binding.btnStart.setOnClickListener {
-              isClicked = true
-              handler.post(runnable)
-          }
 
-          binding.btnPause.setOnClickListener {
-              isClicked = false
 
-          }
+        binding.btnStart.setOnClickListener {
+            isClicked = true
+            handler.post(runnable)
+        }
 
-          binding.btnReset.setOnClickListener {
-              isClicked = false
-              handler.removeCallbacks { runnable }
-              binding.txtVTimer.text = getString(R.string.timer)
-          }
+        binding.btnPause.setOnClickListener {
+            isClicked = false
+            handler.removeCallbacks(runnable)
+
+        }
+
+        binding.btnReset.setOnClickListener {
+            isClicked = false
+            handler.removeCallbacks(runnable)
+
+            binding.txtVTimer.text = getString(R.string.timer)
+        }
+
+        /*if (isClicked) {
+            handler.post(runnable)
+        } else {
+            handler.removeCallbacks(runnable)
+        }*/
 
 
     }
+
+}
 
     //TODO перенести код сюда
     private fun init() {
 
     }
-}
