@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">MyClock</string>
+    <string name="start">START</string>
+    <string name="pause">PAUSE</string>
+    <string name="reset">RESET</string>
+    <string name="timer">0:00:00</string>
+</resources>
